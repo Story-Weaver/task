@@ -14,11 +14,11 @@ public class SQLiteDatabaseManager extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
-        db.execSQL(RadioStationDao.CREATE_TABLE_RADIO_STATION);
+        db.execSQL(ModelDao.CREATE_TABLE_MODEL);
     }
     @Override
     public void onUpgrade(@NonNull SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + RadioStationDao.TABLE_RADIO_STATION);
+        db.execSQL("DROP TABLE IF EXISTS " + ModelDao.TABLE_MODEL);
         onCreate(db);
     }
 }

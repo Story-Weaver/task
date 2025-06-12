@@ -7,9 +7,9 @@ import by.roman.test_app.business_logic.data.dto.ModelDTO;
 import by.roman.test_app.business_logic.data.models.Model;
 import by.roman.test_app.business_logic.data.repository.ModelRepository;
 
-public class ModelReposirotyImpl implements ModelRepository {
+public class ModelRepositoryImpl implements ModelRepository {
     private final ModelDao modelDao;
-    public ModelReposirotyImpl(ModelDao modelDao) {
+    public ModelRepositoryImpl(ModelDao modelDao) {
         this.modelDao = modelDao;
     }
 
