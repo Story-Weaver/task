@@ -38,6 +38,9 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.hilt.android)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.convertergson)
 
     testImplementation(libs.junit)
 
