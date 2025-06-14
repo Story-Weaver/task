@@ -13,6 +13,7 @@ import javax.inject.Singleton;
 
 import by.roman.test_app.business_logic.data.dto.ModelDTO;
 import by.roman.test_app.business_logic.data.models.Model;
+import by.roman.test_app.business_logic.data.models.Organization;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -27,6 +28,7 @@ public class ModelAPI {
         Request request = new Request.Builder()
                 .url(BASE_URL + unv)
                 .build();
+        Log.d("API:", BASE_URL + unv);
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
@@ -47,9 +49,20 @@ public class ModelAPI {
                         Gson gson = new GsonBuilder().create();
                         try {
                             if(jsonResponse.startsWith("{")){
-                                Model model = gson.fromJson(jsonResponse, Model.class);
+                                ApiResponse apiResponse = gson.fromJson(jsonResponse, ApiResponse.class);
+                                Organization org = apiResponse.getOrganization();
                                 ModelDTO dto = new ModelDTO();
-                                dto.fromModel(model);
+                                dto.vunp = org.getVunp();
+                                dto.vnaimp = org.getVnaimp();
+                                dto.vnaimk = org.getVnaimk();
+                                dto.vpadres = org.getVpadres();
+                                dto.dreg = org.getDreg();
+                                dto.nmns = org.getNmns();
+                                dto.vmns = org.getVmns();
+                                dto.ckodsost = org.getCkodsost();
+                                dto.vkods = org.getVkods();
+                                dto.dlikv = org.getDlikv();
+                                dto.vlikv = org.getVlikv();
                                 callback.onSuccess(dto);
                             }
                         } catch (Exception e) {

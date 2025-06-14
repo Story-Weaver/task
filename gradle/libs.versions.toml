@@ -25,4 +25,5 @@ convertergson = "com.squareup.retrofit2:converter-gson:2.9.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 

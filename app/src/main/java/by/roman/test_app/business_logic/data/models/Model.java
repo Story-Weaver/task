@@ -1,20 +1,24 @@
 package by.roman.test_app.business_logic.data.models;
 
 public class Model {
-    private long vunp;
-    private String vnaimp;
-    private String vnaimk;
-    private String vpadres;
-    private String dreg;
-    private int nmns;
-    private String vmns;
-    private int ckodsost;
-    private String vkods;
-    private String dlikv;
-    private String vlikv;
+    private final String vunp;
+    private final String mail;
+    private final String vnaimp;
+    private final String vnaimk;
+    private final String vpadres;
+    private final String dreg;
+    private final String nmns;
+    private final String vmns;
+    private final String ckodsost;
+    private final String vkods;
+    private final String dlikv;
+    private final String vlikv;
 
-    public Model(long vunp, String vnaimp, String vnaimk, String vpadres, String dreg, int nmns, String vmns, int ckodsost, String vkods, String dlikv, String vlikv) {
+    public Model(String vunp, String mail, String vnaimp, String vnaimk,
+                 String vpadres, String dreg, String nmns, String vmns,
+                 String ckodsost, String vkods, String dlikv, String vlikv) {
         this.vunp = vunp;
+        this.mail = mail;
         this.vnaimp = vnaimp;
         this.vnaimk = vnaimk;
         this.vpadres = vpadres;
@@ -27,8 +31,11 @@ public class Model {
         this.vlikv = vlikv;
     }
 
-    public long getVunp() {
+    public String getVunp() {
         return vunp;
+    }
+    public String getMail() {
+        return mail;
     }
     public String getVnaimp() {
         return vnaimp;
@@ -42,13 +49,13 @@ public class Model {
     public String getDreg() {
         return dreg;
     }
-    public int getNmns() {
+    public String getNmns() {
         return nmns;
     }
     public String getVmns() {
         return vmns;
     }
-    public int getCkodsost() {
+    public String getCkodsost() {
         return ckodsost;
     }
     public String getVkods() {
