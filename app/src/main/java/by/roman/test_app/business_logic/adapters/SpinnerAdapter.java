@@ -15,17 +15,17 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
     private final Context context;
     private List<String> items;
     private final LayoutInflater inflater;
-    public void setItems(List<String> items){
-        this.items = items;
-        notifyDataSetChanged();
-    }
     public SpinnerAdapter(@NonNull Context context, @NonNull List<String> items) {
         super(context, android.R.layout.simple_spinner_item, items);
         this.context = context;
         this.items = items;
         this.inflater = LayoutInflater.from(context);
     }
-
+    public void replaceItems(@NonNull List<String> newItems) {
+        this.items.clear();
+        this.items.addAll(newItems);
+        notifyDataSetChanged();
+    }
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {

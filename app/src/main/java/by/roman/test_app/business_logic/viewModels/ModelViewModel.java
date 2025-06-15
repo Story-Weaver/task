@@ -27,6 +27,7 @@ public class ModelViewModel extends ViewModel {
     private MutableLiveData<UiState<Model>> apiModel = new MutableLiveData<>();
     private MutableLiveData<UiState<Model>> addModel = new MutableLiveData<>();
     private MutableLiveData<UiState<Model>> currentModel = new MutableLiveData<>();
+    private MutableLiveData<List<String>> countChanged = new MutableLiveData<>();
     @Inject
     public ModelViewModel(ModelRepository modelRepository, DataFromAPI dataFromAPI) {
         this.modelRepository = modelRepository;
@@ -44,8 +45,14 @@ public class ModelViewModel extends ViewModel {
     public LiveData<UiState<Model>> getCurrentModel(){
         return currentModel;
     }
-    public List<String> getUMPList(){
+    public LiveData<List<String>> getCountChanged(){
+        return countChanged;
+    }
+    public List<String> getList(){
         return modelRepository.getUMPList();
+    }
+    public boolean hasRecord(){
+        return modelRepository.hasRecords();
     }
     public void getModel(String vump){
         currentModel.postValue(UiState.loading());
@@ -88,6 +95,7 @@ public class ModelViewModel extends ViewModel {
                 dto.mail = email;
                 modelRepository.addModel(dto);
                 addModel.postValue(UiState.success(dto.toModel()));
+                countChanged.postValue(modelRepository.getUMPList());
             }
 
             @Override

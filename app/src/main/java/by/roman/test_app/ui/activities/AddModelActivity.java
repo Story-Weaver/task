@@ -1,5 +1,6 @@
 package by.roman.test_app.ui.activities;
 
+import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 import android.annotation.SuppressLint;
@@ -53,7 +54,9 @@ public class AddModelActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(ModelViewModel.class);
         add.setOnClickListener(v -> addButton());
         back.setOnClickListener(v -> finish());
-
+        if(!viewModel.hasRecord()){
+            back.setVisibility(INVISIBLE);
+        }
         ump.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
